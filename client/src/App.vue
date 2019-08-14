@@ -1,18 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <guests-grid :guests="guests" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GuestService from ('./services/GuestsService')
+import GuestsGrid from ('./components/GuestsGrid.js')
 
 export default {
+
   name: 'app',
+
+  data () {
+    return {
+      guests: []
+    }
+  },
+
   components: {
-    HelloWorld
+    'guests-grid': GuestsGrid,
   }
+
 }
 </script>
 
