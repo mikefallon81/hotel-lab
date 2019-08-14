@@ -5,8 +5,9 @@
 </template>
 
 <script>
-import GuestService from ('./services/GuestsService')
-import GuestsGrid from ('./components/GuestsGrid.js')
+import { eventBus } from './main.js'
+import GuestsService from './services/GuestsService'
+import GuestsGrid from './components/GuestsGrid'
 
 export default {
 
@@ -20,6 +21,19 @@ export default {
 
   components: {
     'guests-grid': GuestsGrid,
+  },
+
+  mounted(){
+    this.fetchData();
+
+
+  },
+
+  methods: {
+    fetchData(){
+      GuestsService.getGuests()
+      .then(guests => this.guests = guests);
+    }
   }
 
 }

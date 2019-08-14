@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import GuestService from '@/sevices/GuestService.js'
+import GuestsService from '../services/GuestsService'
 
 
 
