@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <guests-form />
     <guests-grid :guests="guests" />
   </div>
 </template>
@@ -8,6 +9,7 @@
 import { eventBus } from './main.js'
 import GuestsService from './services/GuestsService'
 import GuestsGrid from './components/GuestsGrid'
+import GuestsForm from './components/GuestsForm'
 
 export default {
 
@@ -21,12 +23,18 @@ export default {
 
   components: {
     'guests-grid': GuestsGrid,
+    'guests-form': GuestsForm
   },
 
   mounted(){
     this.fetchData();
 
+    eventBus.$on('guest-added', guest => this.guests.push(guest));
 
+    eventBus.$on('guest-deleted', id => {
+      const index = this.guests.indexOf(guest => guest.id === id);
+      this.guests.splice(index, 1);
+    })
   },
 
   methods: {
