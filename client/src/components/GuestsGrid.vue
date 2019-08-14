@@ -6,9 +6,10 @@
     <div class="guest" v-for="guest in guests">
       <h3>Name: {{guest.name}}</h3>
       <h3>email: {{guest.email}}</h3>
-      <h3 v-if="guest.checkInStatus === true">Checked in</h3>
-      <h3 v-else>Checked out</h3>
-
+      <h3 v-if="guest.checkInStatus === true">Status: Checked In</h3>
+      <h3 v-else>Status: Checked Out</h3>
+      <button class="chkInbtn" v-if="guest.checkInStatus === true" v-on:click="guest.checkInStatus = false" type="button" name="button">Check Out</button>
+      <button class="chkInbtn" v-else type="button" v-on:click="guest.checkInStatus = true" name="button">Check In</button>
       <button class="deleteBtn" v-on:click="handleDelete(guest._id)">Delete guest</button>
     </div>
   </div>
@@ -46,10 +47,18 @@ methods: {
     padding: 10px;
   }
 
+
+  .chkInbtn {
+    font-weight: bold;
+    border-width: thick;
+
+    margin: 5px;
+  }
+
   .deleteBtn {
     font-weight: bold;
     color: red;
     border-width: thick;
-    margin-bottom: 5px;
+    margin: 5px;
   }
 </style>
