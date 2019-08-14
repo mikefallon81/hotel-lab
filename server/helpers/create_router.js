@@ -22,4 +22,4 @@ return router;
 
 };
 
-module.exports = creatRouter;
+module.exports = createRouter;
